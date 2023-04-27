@@ -85,7 +85,7 @@ class Program
     static void Main(string[] args)
     {
 
-        IBook<string> book1 = new Book<string>
+        Book<string> book1 = new Book<string>
         {
             Title = "Книга 1",
             Author = "Автор 1",
@@ -93,7 +93,7 @@ class Program
             Pages = 200
         };
 
-        IBook<int> book2 = new Book<int>
+        Book<int> book2 = new Book<int>
         {
             Title = "Книга 2",
             Author = "Автор 2",
@@ -101,14 +101,14 @@ class Program
             Pages = 150
         };
 
-        IUser<string> user1 = new User<string>
+        User<string> user1 = new User<string>
         {
             Login = "user1",
             Password = "password1"
         };
 
 
-        IUser<int> user2 = new User<int>
+        User<int> user2 = new User<int>
         {
             Login = 2222,
             Password = "password2"
