@@ -1,14 +1,14 @@
 ﻿using System;
 
-interface IPublisher
+interface ICasaEditrice
 {
-    string Title { get; set; }
+    string Titolo { get; set; }
     string Author { get; set; }
 
     void DisplayInfo();
 }
 
-interface IBook<D> : IPublisher
+interface IBook<D> : ICasaEditrice
 {
     D PublicationDate { get; set; }
     int Pages { get; set; }
@@ -18,7 +18,7 @@ interface IBook<D> : IPublisher
 
 class Book<D> : IBook<D>
 {
-    public string Title { get; set; }
+    public string Titolo { get; set; }
     public string Author { get; set; }
     public D PublicationDate { get; set; }
     public int Pages { get; set; }
@@ -26,7 +26,7 @@ class Book<D> : IBook<D>
     public void DisplayInfo()
     {
         Console.WriteLine("Информация о книге:");
-        Console.WriteLine($"Название: {Title}");
+        Console.WriteLine($"Название: {Titolo}");
         Console.WriteLine($"Автор: {Author}");
         Console.WriteLine($"Дата публикации: {PublicationDate}");
         Console.WriteLine($"Количество страниц: {Pages}");
@@ -54,9 +54,9 @@ class User<L> : IUser<L>
     }
 }
 
-class ProductUser<D, L> : IBook<D>, IUser<L>
+class Utente<D, L> : IBook<D>, IUser<L>
 {
-    public string Title { get; set; }
+    public string Titolo { get; set; }
     public string Author { get; set; }
     public D PublicationDate { get; set; }
     public int Pages { get; set; }
@@ -66,7 +66,7 @@ class ProductUser<D, L> : IBook<D>, IUser<L>
     public void DisplayInfo()
     {
         Console.WriteLine("Информация о товаре и пользователе:");
-        Console.WriteLine($"Название товара: {Title}");
+        Console.WriteLine($"Название товара: {Titolo}");
         Console.WriteLine($"Автор товара: {Author}");
         Console.WriteLine($"Дата публикации товара: {PublicationDate}");
         Console.WriteLine($"Количество страниц товара: {Pages}");
@@ -74,9 +74,9 @@ class ProductUser<D, L> : IBook<D>, IUser<L>
         Console.WriteLine($"Пароль пользователя: {Password}");
     }
 
-    public void BuyBook()
+    public void CompratoUnLibro()
     {
-        Console.WriteLine($"Пользователь с логином {Login} купил книгу {Title}.");
+        Console.WriteLine($"Пользователь с логином {Login} купил книгу {Titolo}.");
     }
 }
 
@@ -85,60 +85,59 @@ class Program
     static void Main(string[] args)
     {
 
-        Book<string> book1 = new Book<string>
+        Book<string> uvva = new Book<string>
         {
-            Title = "Книга 1",
-            Author = "Автор 1",
+            Titolo = "Убийство в восточном экспрессе",
+            Author = "Агата Кристи",
             PublicationDate = "01.01.2001",
-            Pages = 200
+            Pages = 845
         };
 
-        Book<int> book2 = new Book<int>
+        Book<int> mp = new Book<int>
         {
-            Title = "Книга 2",
-            Author = "Автор 2",
+            Titolo = "Меч предназначения",
+            Author = "Анджей Сапковский",
             PublicationDate = 02022002,
-            Pages = 150
+            Pages = 38495
         };
 
         User<string> user1 = new User<string>
         {
-            Login = "user1",
-            Password = "password1"
+            Login = "лкпле",
+            Password = "лцьпкд3453ИОУт92"
         };
 
 
         User<int> user2 = new User<int>
         {
             Login = 2222,
-            Password = "password2"
+            Password = "ьпцжШТ8от383р3тш3г4"
         };
 
 
-        ProductUser<string, string> productUser = new ProductUser<string, string>
+        Utente<string, string> utente = new Utente<string, string>
         {
-            Title = "Книга 3",
-            Author = "Автор 3",
+            Titolo = "Крещение Огнём",
+            Author = "Анджей Сапковский",
             PublicationDate = "03.03.2003",
-            Pages = 300,
-            Login = "user3",
-            Password = "password3"
+            Pages = 3145345,
+            Login = "AmericA",
+            Password = "Freeedoooom"
         };
 
-        book1.DisplayInfo();
+        uvva.DisplayInfo();
 
 
-        book2.DisplayInfo();
+        mp.DisplayInfo();
 
 
         user1.DisplayInfo();
 
         user2.DisplayInfo();
 
-        productUser.DisplayInfo();
+        utente.DisplayInfo();
 
-
-        productUser.BuyBook();
+        utente.CompratoUnLibro();
 
         Console.ReadLine();
     }
